@@ -64,6 +64,13 @@ export class HomeComponent implements OnInit {
       console.log("UNdo");
       
     }
+
+    setTimeout(()=>{
+      console.log("Hello From Undo");
+      document.getElementById('undo').style.display="block";
+     
+      
+    },3000)
     
   }
 

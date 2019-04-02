@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
 
     let r = confirm("You Are About To Delete The Movie ");
 
-    
+    this.clearOne(id);
     if (r == true) {
       let a = [];
       // Parse the serialized data back into an aray of objects
@@ -72,6 +72,13 @@ export class HomeComponent implements OnInit {
       
     },3000)
     
+  }
+
+
+  clearOne(id: any){
+    
+
+
   }
 
   clearAll(){

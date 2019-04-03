@@ -7,7 +7,7 @@ This project was generated For Ebla Company as a Task
 
 2) Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-##Task Requriemnts
+## Task Requirements
 - Use movies Api for applying  RESTFUL APIS ( Done )
 - Every Movie Have Two Buttons View And Delete ( Done)
 - When we delte the movie will appear an Undo button in the page header (Done)

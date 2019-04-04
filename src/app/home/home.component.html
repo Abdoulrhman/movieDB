@@ -11,9 +11,7 @@
       <form>
         <div class="row">
           <div class="col-9">
-            <input type="text" class="form-control" placeholder="Search Movies"
-              name="movie"
-              [(ngModel)]="movie">
+            <input type="text" class="form-control" placeholder="Search Movies" name="movie" [(ngModel)]="movie">
           </div>
           <div class="col-3">
             <button class=" btn-info form-control" (click)="searchMovies()">Search</button>
@@ -25,25 +23,26 @@
   <br>
   <div class="row">
     <div class="col-9">
-  
-    <button class=" btn-success form-control" (click)="clearAll()">Recover Deleted Movies</button>
+
+      <button class=" btn-success form-control" (click)="clearAll()">Recover Deleted Movies</button>
     </div>
 
     <div class="col-3">
-  
-      <button class=" btn-info form-control" style="display:none" id='undo'>Undo</button>
-      </div>
+
+      <button class=" btn-info form-control" style="display:none" id='undo' (click)="clearOne()">Undo</button>
+    </div>
   </div>
 
   <div class="row">
-    <div  class="col-sm-4" *ngFor="let movie of search_result| filter : search_result  ; let i = index">
+    <div class="col-sm-4" *ngFor="let movie of search_result| filter : search_result  ; let i = index">
       <div *ngIf="i < 9">
         <div class="card mt-3 mb-3">
           <div class="card-header text-center">
             {{ movie.release_date | date:'mediumDate':'yyyy' }}
           </div>
           <div class="card-body">
-            <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="{{ movie.original_title }}" style="height: 460px">
+            <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
+              alt="{{ movie.original_title }}" style="height: 460px">
             <p class="text-center">{{ movie.original_title }}</p>
             <a routerLink="/movie/{{ movie.id }}" href="#" class="btn  btn-info">Movie Details</a>
             <button class="btn btn-danger" (click)="addToDelteList(movie.id,search_result,i)">Delete</button>
@@ -62,14 +61,15 @@
   </div>
 
   <div class="row">
-    <div  class="col-sm-4" *ngFor="let upcoming of upcoming_movies | filter : upcoming_movies ; let i = index">
+    <div class="col-sm-4" *ngFor="let upcoming of upcoming_movies | filter : upcoming_movies ; let i = index">
       <div *ngIf="i < 9">
         <div class="card mt-3 mb-3">
           <div class="card-header text-center">
             {{ upcoming.release_date | date:'mediumDate' }}
           </div>
           <div class="card-body">
-            <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w500/{{ upcoming.poster_path }}" alt="{{ upcoming.original_title }}" style="height: 460px">
+            <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w500/{{ upcoming.poster_path }}"
+              alt="{{ upcoming.original_title }}" style="height: 460px">
             <p class="text-center">{{ upcoming.original_title }}</p>
             <a routerLink="/movie/{{ upcoming.id }}" href="#" class="btn  btn-info">Movie Details</a>
             <button class="btn btn-danger" (click)="addToDelteList(upcoming.id,upcoming_movies,i)">Delete</button>
@@ -88,14 +88,15 @@
   </div>
 
   <div class="row">
-    <div  class="col-sm-4" *ngFor="let popular of popular_movies | filter : popular_movies; let i = index">
+    <div class="col-sm-4" *ngFor="let popular of popular_movies | filter : popular_movies; let i = index">
       <div *ngIf="i < 9">
         <div class="card mt-3 mb-3">
           <div class="card-header text-center">
             {{ popular.release_date | date:'mediumDate' }}
           </div>
           <div class="card-body">
-            <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w500/{{ popular.poster_path }}" alt="{{ popular.original_title }}" style="height: 460px">
+            <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w500/{{ popular.poster_path }}"
+              alt="{{ popular.original_title }}" style="height: 460px">
             <p class="text-center">{{ popular.original_title }}</p>
             <a routerLink="/movie/{{ popular.id }}" href="#" class="btn  btn-info">Movie Details</a>
             <button class="btn btn-danger" (click)="addToDelteList(popular.id,popular_movies,i)">Delete</button>

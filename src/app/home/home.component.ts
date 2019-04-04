@@ -1,39 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { Component } from '@angular/core';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
   popular_movies: any;
   upcoming_movies: any;
   search_result: any;
   movie: any;
 
-
   constructor(public movieService: MovieService) {
 
 
 
-    // get upcoming movies
-    this.movieService.getUpcomingMovies().subscribe(data => {
+    // get upcoming movies by movie service
+    this.movieService.getUpcomingMovies().subscribe(
+      data => {
       this.upcoming_movies = data['results'];
       // console.log(this.upcoming_movies);
     });
 
-    // get popular movies
-    this.movieService.getPopularMovies().subscribe(data => {
+    // get popular movies by movie service
+    this.movieService.getPopularMovies().subscribe(
+      data => {
       this.popular_movies = data['results'];
       // console.log(this.popular_movies);
     });
 
   }
 
-  // get search results of movies
+  // get search results of movies by movie service
   searchMovies() {
-    this.movieService.searchMovie(this.movie).subscribe(data => {
+    this.movieService.searchMovie(this.movie).subscribe(
+      data => {
       this.search_result = data['results'];
       // console.log(this.search_result);
     });
@@ -42,11 +44,14 @@ export class HomeComponent implements OnInit {
 
   addToDelteList(id: any,arr:any, index:any){
 
+
+
     let r = confirm("You Are About To Delete The Movie ");
 
-    this.clearOne(id);
+   
     if (r == true) {
       let a = [];
+      console.log(a.indexOf(id));
       // Parse the serialized data back into an aray of objects
       if(JSON.parse(localStorage.getItem('session'))){
         a = JSON.parse(localStorage.getItem('session'));
@@ -64,18 +69,35 @@ export class HomeComponent implements OnInit {
       console.log("UNdo");
       
     }
-
+ 
     setTimeout(()=>{
       console.log("Hello From Undo");
       document.getElementById('undo').style.display="block";
-     
+  
       
-    },3000)
+
+      
+    },1000);
+
+  
     
   }
 
 
-  clearOne(id: any){
+  clearOne(id?: any){
+
+    let a = [];
+    // Parse the serialized data back into an aray of objects
+    if(JSON.parse(localStorage.getItem('session'))){
+      a = JSON.parse(localStorage.getItem('session'));
+    }
+    a.splice(-1,1);
+    localStorage.setItem('session', JSON.stringify(a));
+    location.reload();
+  
+    
+
+
     
 
 
@@ -86,7 +108,5 @@ export class HomeComponent implements OnInit {
     location.reload();
   }
 
-  ngOnInit() {
-  }
 
 }

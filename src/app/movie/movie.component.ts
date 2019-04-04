@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { MovieService } from '../services/movie.service';
 
@@ -15,10 +15,11 @@ export class MovieComponent implements OnInit {
   ngOnInit() {
     this.router.params.subscribe((params) => {
       const id = params['movieID'];
-      this.movieService.getMovie(id).subscribe(data => {
-        this.movie = data;
-        // console.log(data);
-      });
+      this.movieService.getMovie(id).subscribe(
+        data => {
+          this.movie = data;
+          // console.log(data);
+        });
     });
   }
 

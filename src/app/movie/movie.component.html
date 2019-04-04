@@ -10,7 +10,8 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-5">
-                <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" class="img-fluid" alt="{{ movie.title }}">
+                <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" class="img-fluid"
+                  alt="{{ movie.title }}">
               </div>
               <div class="col-sm-7">
                 <ul class="list-group">
@@ -27,8 +28,8 @@
                     <strong>Runtime: </strong> {{ movie.runtime }}
                   </li>
                   <li class="list-group-item">
-                      <strong>Budget: </strong> {{ movie.budget }}
-                    </li>
+                    <strong>Budget: </strong> {{ movie.budget }}
+                  </li>
                   <li class="list-group-item">
                     <strong>Genre: </strong>
                     <span *ngFor="let genre of movie.genres" class="badge badge-primary mr-2">
@@ -39,7 +40,8 @@
                     <a href="{{ movie.homepage }}" target="_blank">
                       Movie Homepage
                     </a>
-                    <a href="https://www.imdb.com/title/{{ movie.imdb_id }}" target="_blank" class="btn btn-sm btn-info float-right">
+                    <a href="https://www.imdb.com/title/{{ movie.imdb_id }}" target="_blank"
+                      class="btn btn-sm btn-info float-right">
                       IMDB Link
                     </a>
                   </li>
